@@ -1,1 +1,3 @@
-Tarcza zegara. Tworząc ten dość prosty projekt, najtrudniejsze było dla mnie ustawienie wszystkich liczb na odpowiednim miejscu. 
+# Pomodoro Timer
+
+Work in progress, I will push some more code soon!
