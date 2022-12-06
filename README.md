@@ -1,3 +1,3 @@
-# Pomodoro Timer
+# React.js Pomodoro Timer
 
-Work in progress, I will push some more code soon!
+Pomodoro Timer app built using Typescript, React and Material UI. Configurable timers for both work and break modes. I'm still working on this project.
