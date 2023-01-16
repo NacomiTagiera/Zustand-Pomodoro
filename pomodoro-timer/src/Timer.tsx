@@ -4,17 +4,15 @@ import { pomodoroContext } from "./PomodoroProvider";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Box, Button, Typography } from "@mui/material";
-import {
-  PauseCircle,
-  PlayCircle,
-  SettingsApplications,
-} from "@mui/icons-material";
+import { PauseCircle, PlayCircle } from "@mui/icons-material";
+
+type timerMode = "work" | "break";
 
 export default function Timer() {
   const pomodoroInfo = useContext(pomodoroContext);
 
   const [isPaused, setIsPaused] = useState<boolean>(true);
-  const [mode, setMode] = useState<string>("work");
+  const [mode, setMode] = useState<timerMode>("work");
   const [secondsLeft, setSecondsLeft] = useState<number>(0);
 
   const secondsLeftRef = useRef(secondsLeft);
@@ -73,11 +71,7 @@ export default function Timer() {
   return (
     <Box sx={{ textAlign: "center" }}>
       <div style={{ width: "300px", height: "300px", marginInline: "auto" }}>
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{ color: "#fff", pb: 2, textAlign: "center" }}
-        >
+        <Typography variant="h2" component="h2" pb={2} textAlign="center">
           {mode === "work" ? "Work" : "Break"}
         </Typography>
         <CircularProgressbar
@@ -86,29 +80,29 @@ export default function Timer() {
           styles={buildStyles({
             pathColor: mode === "work" ? "#f54e4e" : "#4aec8c",
             textColor: "#fff",
-            trailColor: "rgba(255, 255, 255, .2)",
+            trailColor: "rgba(255, 255, 255, 0.2)",
           })}
         />
       </div>
-      <Button
-        onClick={() => {
-          setIsPaused(false);
-          isPausedRef.current = false;
-        }}
-      >
-        <PlayCircle />
-      </Button>
-      <Button
-        onClick={() => {
-          setIsPaused(true);
-          isPausedRef.current = true;
-        }}
-      >
-        <PauseCircle />
-      </Button>
-      <Button onClick={() => pomodoroInfo.setShowSettings(true)}>
-        <SettingsApplications />
-      </Button>
+      {isPaused ? (
+        <Button
+          onClick={() => {
+            setIsPaused(false);
+            isPausedRef.current = false;
+          }}
+        >
+          <PlayCircle fontSize="large" />
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            setIsPaused(true);
+            isPausedRef.current = true;
+          }}
+        >
+          <PauseCircle fontSize="large" />
+        </Button>
+      )}
     </Box>
   );
 }
