@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Card, Slider, Typography } from "@mui/material";
-import { pomodoroContext } from "./PomodoroProvider";
+import { pomodoroContext } from "../providers/PomodoroProvider";
+import { numberToString } from "../utils/numberToString";
 
 export default function Settings() {
   const settingsInfo = useContext(pomodoroContext);
@@ -31,14 +32,14 @@ export default function Settings() {
       <Typography variant="h4" component="h4" pb={3}>
         Settings
       </Typography>
-      <label>Work: {settingsInfo.workMinutes}:00</label>
+      <label>Work: {numberToString(settingsInfo.workMinutes)}:00</label>
       <Slider
         value={settingsInfo.workMinutes}
         min={1}
         max={60}
         onChange={handleChangeWork}
       />
-      <label>Break: {settingsInfo.breakMinutes}:00</label>
+      <label>Break: {numberToString(settingsInfo.breakMinutes)}:00</label>
       <Slider
         value={settingsInfo.breakMinutes}
         min={1}

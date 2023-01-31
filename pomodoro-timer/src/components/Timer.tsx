@@ -1,10 +1,12 @@
-import { useContext, useState, useEffect, useRef } from "react";
-import { pomodoroContext } from "./PomodoroProvider";
+import { useContext, useEffect, useRef, useState } from "react";
+import { pomodoroContext } from "../providers/PomodoroProvider";
 
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Box, Button, Typography } from "@mui/material";
 import { PauseCircle, PlayCircle } from "@mui/icons-material";
+import { numberToString } from "../utils/numberToString";
+import timesUp from "../sounds/timesUp.mp3";
 
 type timerMode = "work" | "break";
 
@@ -15,13 +17,17 @@ export default function Timer() {
   const [mode, setMode] = useState<timerMode>("work");
   const [secondsLeft, setSecondsLeft] = useState<number>(0);
 
-  const secondsLeftRef = useRef(secondsLeft);
   const isPausedRef = useRef(isPaused);
   const modeRef = useRef(mode);
+  const secondsLeftRef = useRef(secondsLeft);
 
   function tick() {
     secondsLeftRef.current--;
     setSecondsLeft(secondsLeftRef.current);
+  }
+
+  function playSound() {
+    new Audio(timesUp).play();
   }
 
   useEffect(() => {
@@ -37,6 +43,8 @@ export default function Timer() {
 
       setSecondsLeft(nextSeconds);
       secondsLeftRef.current = nextSeconds;
+
+      playSound();
     }
 
     secondsLeftRef.current = pomodoroInfo.workMinutes * 60;
@@ -65,9 +73,6 @@ export default function Timer() {
   let minutes = Math.floor(secondsLeft / 60);
   let seconds = secondsLeft % 60;
 
-  let minutesStr = minutes < 10 ? "0" + String(minutes) : String(minutes);
-  let secondsStr = seconds < 10 ? "0" + String(seconds) : String(seconds);
-
   return (
     <Box sx={{ textAlign: "center" }}>
       <div style={{ width: "300px", height: "300px", marginInline: "auto" }}>
@@ -76,7 +81,7 @@ export default function Timer() {
         </Typography>
         <CircularProgressbar
           value={percentage}
-          text={minutesStr + ":" + secondsStr}
+          text={numberToString(minutes) + ":" + numberToString(seconds)}
           styles={buildStyles({
             pathColor: mode === "work" ? "#f54e4e" : "#4aec8c",
             textColor: "#fff",
