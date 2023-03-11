@@ -1,3 +1,3 @@
-# React.js Pomodoro Timer
+# Next.js Pomodoro Timer
 
-Pomodoro Timer app built using TypeScript, React.js and Material UI. Configurable timers for both work and break modes.
+A minimalistic pomodoro timer app built with **Next.js**, **Zustand** and **Material UI**. My main purpose of creating this project was to practice application state management with Zustand. 

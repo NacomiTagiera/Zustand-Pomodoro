@@ -8,8 +8,9 @@ interface TimerState {
   breakLength: number;
   timeLeft: number;
   isRunning: boolean;
-  pauseTimer: () => void;
-  restartTimer: () => void;
+  toggleTimer: () => void;
+  countDown: () => void;
+  resetTimer: () => void;
   changeMode: (mode: TimerMode) => void;
   changeLength: (sessionType: TimerMode, length: number) => void;
 }
@@ -20,25 +21,29 @@ const initialState: TimerState = {
   breakLength: 5,
   timeLeft: 25 * 60,
   isRunning: false,
-  pauseTimer: () => {},
-  restartTimer: () => {},
+  toggleTimer: () => {},
+  countDown: () => {},
+  resetTimer: () => {},
   changeMode: () => {},
   changeLength: () => {},
 };
 
 export const useTimerStore = create<TimerState>((set, get) => ({
   ...initialState,
-  pauseTimer: () => {
-    set({ isRunning: false });
+  toggleTimer: () => {
+    set((state) => ({ isRunning: !state.isRunning }));
   },
-  restartTimer: () => {
+  countDown: () => {
+    set((state) => ({ timeLeft: state.timeLeft - 1 }));
+  },
+  resetTimer: () => {
     const mode = get().mode;
     const timeLeft = get()[`${mode}Length`] * 60;
     set({ timeLeft, isRunning: true });
   },
   changeMode: (mode: TimerMode) => {
     set({ mode });
-    get().restartTimer();
+    get().resetTimer();
   },
   changeLength: (sessionType: TimerMode, length: number) => {
     set((_state) => ({ [`${sessionType}Length`]: length }));
