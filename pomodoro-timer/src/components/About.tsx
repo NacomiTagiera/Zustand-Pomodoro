@@ -10,6 +10,7 @@ export default function About() {
         component="p"
         sx={{
           fontSize: { xs: "16px", md: "18px" },
+          px: { xs: 2, md: 0 },
           textAlign: "justify",
         }}
       >

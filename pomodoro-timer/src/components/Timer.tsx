@@ -7,6 +7,7 @@ import { red } from "@mui/material/colors";
 import Header from "./Header";
 import Settings from "./Settings";
 import { useTimerStore } from "@/store/timerStore";
+import formatTime from "@/utils/formatTime";
 
 export default function Timer() {
   const {
@@ -26,7 +27,10 @@ export default function Timer() {
       }, 1000);
     }
 
-    if (!timeLeft) {
+    if (timeLeft === 0) {
+      const audio = new Audio("/beep.mp3");
+      audio.play();
+    } else if (timeLeft < 0) {
       changeMode(mode === "break" ? "work" : "break");
     }
 
@@ -82,7 +86,7 @@ export default function Timer() {
           {mode}
         </Typography>
         <Typography component="h1" variant="h3">
-          {timeLeft}
+          {formatTime(timeLeft)}
         </Typography>
         <Button
           className="button button--large"
