@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 
 import { PlayArrow, Pause, RestartAlt } from "@mui/icons-material";
-import { Box, Button, Card, Typography } from "@mui/material";
+import { Box, Card, Stack, Typography } from "@mui/material";
 import { red } from "@mui/material/colors";
 
+import CustomButton from "./Button";
 import Header from "./Header";
 import Settings from "./Settings";
 import { useTimerStore } from "@/store/timerStore";
@@ -88,20 +89,20 @@ export default function Timer() {
         <Typography component="h1" variant="h3">
           {formatTime(timeLeft)}
         </Typography>
-        <Button
-          className="button button--large"
-          sx={{ left: 0 }}
-          onClick={handleToggleTimer}
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          position="absolute"
+          bottom={-10}
         >
-          {isRunning ? <Pause /> : <PlayArrow />}
-        </Button>
-        <Button
-          className="button button--large"
-          sx={{ right: 0 }}
-          onClick={handleResetTimer}
-        >
-          <RestartAlt />
-        </Button>
+          <CustomButton large onClick={handleToggleTimer}>
+            {isRunning ? <Pause /> : <PlayArrow />}
+          </CustomButton>
+          <CustomButton large onClick={handleResetTimer}>
+            <RestartAlt />
+          </CustomButton>
+        </Stack>
       </Box>
       <Settings />
     </Card>

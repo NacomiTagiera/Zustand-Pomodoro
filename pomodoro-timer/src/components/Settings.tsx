@@ -1,5 +1,6 @@
-import { Button, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 
+import CustomButton from "./Button";
 import { useTimerStore } from "@/store/timerStore";
 
 export default function Settings() {
@@ -35,21 +36,19 @@ export default function Settings() {
           justifyContent="space-between"
           direction="row"
         >
-          <Button
-            className="button"
+          <CustomButton
             disabled={!!(workLength === 1) || isRunning}
             onClick={decrementWorkLength}
           >
             -
-          </Button>
+          </CustomButton>
           <p style={pStyles}>{workLength}</p>
-          <Button
-            className="button"
+          <CustomButton
             disabled={!!(workLength === 60) || isRunning}
             onClick={incrementWorkLength}
           >
             +
-          </Button>
+          </CustomButton>
         </Stack>
       </Stack>
       <Stack alignItems="center">
@@ -59,21 +58,19 @@ export default function Settings() {
           justifyContent="space-between"
           direction="row"
         >
-          <Button
-            className="button"
+          <CustomButton
             disabled={!!(breakLength === 1) || isRunning}
             onClick={decrementBreakLength}
           >
             -
-          </Button>
+          </CustomButton>
           <p style={pStyles}>{breakLength}</p>
-          <Button
-            className="button"
+          <CustomButton
             disabled={!!(breakLength === 60) || isRunning}
             onClick={incrementBreakLength}
           >
             +
-          </Button>
+          </CustomButton>
         </Stack>
       </Stack>
     </Stack>
