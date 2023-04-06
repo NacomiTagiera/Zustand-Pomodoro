@@ -38,14 +38,6 @@ export default function Timer() {
     return () => clearInterval(tick);
   }, [isRunning, timeLeft]);
 
-  const handleResetTimer = () => {
-    resetTimer();
-  };
-
-  const handleToggleTimer = () => {
-    toggleTimer();
-  };
-
   return (
     <Card
       component="section"
@@ -67,8 +59,8 @@ export default function Timer() {
           alignItems: "center",
           bgcolor: red[400],
           borderRadius: "50%",
-          height: "180px",
-          width: "180px",
+          height: 180,
+          width: 180,
           mx: "auto",
           my: 5,
           position: "relative",
@@ -96,10 +88,10 @@ export default function Timer() {
           position="absolute"
           bottom={-10}
         >
-          <CustomButton large onClick={handleToggleTimer}>
+          <CustomButton large onClick={() => toggleTimer()}>
             {isRunning ? <Pause /> : <PlayArrow />}
           </CustomButton>
-          <CustomButton large onClick={handleResetTimer}>
+          <CustomButton large onClick={() => resetTimer()}>
             <RestartAlt />
           </CustomButton>
         </Stack>

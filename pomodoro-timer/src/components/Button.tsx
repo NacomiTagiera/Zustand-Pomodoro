@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import classes from "./styles.module.scss";
+import classes from "@/styles/Button.module.scss";
 
 interface Props {
   children: ReactNode;
@@ -18,7 +18,12 @@ export default function CustomButton({
   const className = large ? classes["button--large"] : classes.button;
 
   return (
-    <button className={className} disabled={disabled} onClick={onClick}>
+    <button
+      className={className}
+      disabled={disabled}
+      aria-disabled={disabled}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
