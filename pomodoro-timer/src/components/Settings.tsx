@@ -1,10 +1,34 @@
+import { useEffect, useState } from "react";
 import { Stack } from "@mui/material";
 
 import CustomButton from "./Button";
 import { useTimerStore } from "@/store/timerStore";
 
 export default function Settings() {
+  const [screenWidth, setScreenWidth] = useState<number | null>(
+    getCurrentWidth()
+  );
   const { breakLength, workLength, isRunning, changeLength } = useTimerStore();
+
+  function getCurrentWidth() {
+    if (typeof window !== "undefined") {
+      return window.innerWidth;
+    }
+
+    return null;
+  }
+
+  useEffect(() => {
+    const updateWidth = () => {
+      setScreenWidth(getCurrentWidth());
+    };
+
+    window.addEventListener("resize", updateWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+    };
+  }, [screenWidth]);
 
   const incrementBreakLength = () => {
     changeLength("break", breakLength + 1);
@@ -26,7 +50,7 @@ export default function Settings() {
     <Stack
       alignItems="center"
       justifyContent="space-between"
-      direction="row"
+      direction={screenWidth !== null && screenWidth < 310 ? "column" : "row"}
       color="#e53935"
     >
       <Stack alignItems="center">
@@ -37,14 +61,14 @@ export default function Settings() {
           direction="row"
         >
           <CustomButton
-            disabled={!!(workLength === 1) || isRunning}
+            disabled={workLength === 1 || isRunning}
             onClick={decrementWorkLength}
           >
             -
           </CustomButton>
           <p style={pStyles}>{workLength}</p>
           <CustomButton
-            disabled={!!(workLength === 60) || isRunning}
+            disabled={workLength === 6 || isRunning}
             onClick={incrementWorkLength}
           >
             +
@@ -59,14 +83,14 @@ export default function Settings() {
           direction="row"
         >
           <CustomButton
-            disabled={!!(breakLength === 1) || isRunning}
+            disabled={breakLength === 1 || isRunning}
             onClick={decrementBreakLength}
           >
             -
           </CustomButton>
           <p style={pStyles}>{breakLength}</p>
           <CustomButton
-            disabled={!!(breakLength === 60) || isRunning}
+            disabled={breakLength === 60 || isRunning}
             onClick={incrementBreakLength}
           >
             +
