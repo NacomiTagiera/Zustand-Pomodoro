@@ -15,21 +15,12 @@ interface TimerState {
   changeLength: (sessionType: TimerMode, length: number) => void;
 }
 
-const initialState: TimerState = {
+export const useTimerStore = create<TimerState>((set, get) => ({
   mode: "work",
   workLength: 25,
   breakLength: 5,
   timeLeft: 25 * 60,
   isRunning: false,
-  toggleTimer: () => {},
-  countDown: () => {},
-  resetTimer: () => {},
-  changeMode: () => {},
-  changeLength: () => {},
-};
-
-export const useTimerStore = create<TimerState>((set, get) => ({
-  ...initialState,
   toggleTimer: () => {
     set((state) => ({ isRunning: !state.isRunning }));
   },
