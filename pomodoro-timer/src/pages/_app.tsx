@@ -9,8 +9,6 @@ export default function App({ Component, pageProps }: AppProps) {
     <Fragment>
       <Head>
         <title>Pomodoro Timer</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="Project created with the purpose of learning the fundamentals of Zustand."

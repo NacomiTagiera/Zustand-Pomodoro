@@ -4,13 +4,16 @@ import classes from "@/styles/Button.module.scss";
 
 interface Props {
   children: ReactNode;
+  title: string;
   disabled?: boolean;
   large?: boolean;
+
   onClick: () => void;
 }
 
 export default function CustomButton({
   children,
+  title,
   disabled = false,
   large = false,
   onClick,
@@ -20,6 +23,7 @@ export default function CustomButton({
   return (
     <button
       className={className}
+      title={title}
       disabled={disabled}
       aria-disabled={disabled}
       onClick={onClick}

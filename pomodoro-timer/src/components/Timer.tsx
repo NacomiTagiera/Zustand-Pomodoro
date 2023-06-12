@@ -88,10 +88,18 @@ export default function Timer() {
           position="absolute"
           bottom={-10}
         >
-          <CustomButton large onClick={() => toggleTimer()}>
+          <CustomButton
+            title={isRunning ? "Pause the timer" : "Start the timer"}
+            large
+            onClick={() => toggleTimer()}
+          >
             {isRunning ? <Pause /> : <PlayArrow />}
           </CustomButton>
-          <CustomButton large onClick={() => resetTimer()}>
+          <CustomButton
+            title="Reset the timer"
+            large
+            onClick={() => resetTimer()}
+          >
             <RestartAlt />
           </CustomButton>
         </Stack>
