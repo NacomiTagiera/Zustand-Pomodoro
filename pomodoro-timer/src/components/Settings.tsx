@@ -4,7 +4,7 @@ import ButtonGroup from "./ButtonGroup";
 import { useTimerStore } from "@/store/timerStore";
 
 export default function Settings() {
-  const { breakLength, workLength, isRunning, changeLength } = useTimerStore();
+  const { breakLength, workLength, changeLength } = useTimerStore();
 
   const handleLengthChange = (type: "break" | "work", value: number) => {
     changeLength(type, value);
@@ -20,14 +20,12 @@ export default function Settings() {
       <ButtonGroup
         label="Session Length"
         value={workLength}
-        disabled={isRunning || workLength === 1}
         onDecrement={() => handleLengthChange("work", workLength - 1)}
         onIncrement={() => handleLengthChange("work", workLength + 1)}
       />
       <ButtonGroup
         label="Break Length"
         value={breakLength}
-        disabled={isRunning || breakLength === 1}
         onDecrement={() => handleLengthChange("break", breakLength - 1)}
         onIncrement={() => handleLengthChange("break", breakLength + 1)}
       />

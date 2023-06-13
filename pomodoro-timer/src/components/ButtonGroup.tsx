@@ -1,8 +1,10 @@
 import { Stack } from "@mui/material";
+
 import CustomButton from "./Button";
+import { useTimerStore } from "@/store/timerStore";
+import styles from "@/styles/components/ButtonGroup.module.scss";
 
 interface Props {
-  disabled: boolean;
   label: string;
   value: number;
   onDecrement: () => void;
@@ -10,15 +12,16 @@ interface Props {
 }
 
 export default function ButtonGroup({
-  disabled,
   label,
   value,
   onDecrement,
   onIncrement,
 }: Props) {
+  const { isRunning } = useTimerStore();
+
   return (
-    <Stack alignItems="center">
-      <span style={{ fontWeight: 600 }}>{label}</span>
+    <div className={styles["button-group"]}>
+      <span className={styles.label}>{label}</span>
       <Stack alignItems="center" justifyContent="space-between" direction="row">
         <CustomButton
           title={
@@ -26,30 +29,24 @@ export default function ButtonGroup({
               ? "Decrease the session length"
               : "Decrease the break length"
           }
-          disabled={disabled}
+          disabled={isRunning || value === 1}
           onClick={onDecrement}
         >
           -
         </CustomButton>
-        <p style={pStyles}>{value}</p>
+        <p className={styles.value}>{value}</p>
         <CustomButton
           title={
             label === "Session Length"
               ? "Increase the session length"
               : "Increase the break length"
           }
-          disabled={disabled}
+          disabled={isRunning || value === 60}
           onClick={onIncrement}
         >
           +
         </CustomButton>
       </Stack>
-    </Stack>
+    </div>
   );
 }
-
-const pStyles = {
-  fontSize: 26,
-  lineHeight: 1,
-  px: 7,
-};

@@ -1,20 +1,19 @@
 import { ReactNode } from "react";
 
-import classes from "@/styles/Button.module.scss";
+import classes from "@/styles/components/Button.module.scss";
 
 interface Props {
   children: ReactNode;
   title: string;
   disabled?: boolean;
   large?: boolean;
-
   onClick: () => void;
 }
 
 export default function CustomButton({
   children,
+  disabled,
   title,
-  disabled = false,
   large = false,
   onClick,
 }: Props) {
