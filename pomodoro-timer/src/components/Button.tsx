@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 
 import classes from "@/styles/components/Button.module.scss";
 
 interface Props {
-  children: ReactNode;
+  children: string | ReactElement;
   title: string;
   disabled?: boolean;
   large?: boolean;
@@ -12,16 +12,14 @@ interface Props {
 
 export default function CustomButton({
   children,
-  disabled,
   title,
+  disabled = false,
   large = false,
   onClick,
 }: Props) {
-  const className = large ? classes["button--large"] : classes.button;
-
   return (
     <button
-      className={className}
+      className={large ? classes["button--large"] : classes.button}
       title={title}
       disabled={disabled}
       aria-disabled={disabled}

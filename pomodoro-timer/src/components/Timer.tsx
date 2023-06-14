@@ -22,8 +22,10 @@ export default function Timer() {
   } = useTimerStore();
 
   useEffect(() => {
+    let tick: NodeJS.Timeout | null = null;
+
     if (isRunning) {
-      var tick = setInterval(() => {
+      tick = setInterval(() => {
         countDown();
       }, 1000);
     }
@@ -35,7 +37,11 @@ export default function Timer() {
       changeMode(mode === "break" ? "work" : "break");
     }
 
-    return () => clearInterval(tick);
+    return () => {
+      if (tick) {
+        clearInterval(tick);
+      }
+    };
   }, [isRunning, timeLeft]);
 
   return (
