@@ -29,7 +29,7 @@ export const useTimerStore = create<TimerState>((set, get) => ({
     set((state) => ({ timeLeft: state.timeLeft - 1 }));
   },
   resetTimer: () => {
-    set({ timeLeft: get()[`${get().mode}Length`] * 60, isRunning: false });
+    set({ timeLeft: get()[`${get().mode}Length`] * 60, isRunning: true });
   },
   changeMode: (mode: TimerMode) => {
     set({ mode });

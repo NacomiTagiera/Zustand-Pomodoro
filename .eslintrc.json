@@ -15,5 +15,26 @@
     "no-unused-vars": "error",
     "no-use-before-define": "error",
     "no-console": "warn"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.js", "**/*.ts", "**/*.tsx"],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              ["^react", "^@?\\w"],
+              ["^next", "^@?\\w"],
+              ["^(@|components|utils|store)(/.*|$)"],
+              ["^\\u0000"],
+              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+              ["^.+\\.s?css$"]
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }

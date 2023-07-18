@@ -1,9 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
 import { Pause, PlayArrow, RestartAlt } from '@mui/icons-material';
 import { Box, Card, Stack, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
-import { useEffect } from 'react';
 
 import { useTimerStore } from '@/store/timerStore';
 import formatTime from '@/utils/formatTime';

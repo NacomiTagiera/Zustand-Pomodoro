@@ -42,7 +42,7 @@ describe('useTimerStore', () => {
     expect(result.current.timeLeft).toEqual(prevTimeLeft - 1);
     act(() => result.current.resetTimer());
     expect(result.current.timeLeft).toEqual(25 * 60);
-    expect(result.current.isRunning).toEqual(false);
+    expect(result.current.isRunning).toEqual(true);
   });
 
   it('should change the mode when changeMode is called', () => {
