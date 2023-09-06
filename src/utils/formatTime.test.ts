@@ -1,4 +1,4 @@
-import formatTime from './formatTime';
+import { formatTime } from './formatTime';
 
 describe('formatTime', () => {
   it('should format time correctly when minutes and seconds are both single digits', () => {

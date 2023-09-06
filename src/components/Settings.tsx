@@ -12,12 +12,7 @@ export default function Settings() {
   };
 
   return (
-    <Stack
-      alignItems='center'
-      justifyContent='space-between'
-      direction='row'
-      color='#e53935'
-    >
+    <Stack alignItems='center' justifyContent='space-between' direction='row' color='#e53935'>
       <ButtonGroup
         label='Session Length'
         value={workLength}

@@ -13,19 +13,16 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'Pomodoro Timer',
   description:
-    'A minimalistic pomodoro timer app created with purpose of learning the fundamentals of Zustand.',
+    'Minimalistic pomodoro timer app created with purpose of learning the fundamentals of Zustand.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
       <head>
         <link
           rel='icon'
+          as='icon'
           href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>🍅</text></svg>"
         />
       </head>

@@ -1,4 +1,4 @@
-export default function formatTime(time: number) {
+export function formatTime(time: number) {
   const mins = Math.floor(time / 60);
   const secs = time % 60;
 

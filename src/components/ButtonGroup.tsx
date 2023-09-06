@@ -12,12 +12,7 @@ interface Props {
   onIncrement: () => void;
 }
 
-export default function ButtonGroup({
-  label,
-  value,
-  onDecrement,
-  onIncrement,
-}: Props) {
+export default function ButtonGroup({ label, value, onDecrement, onIncrement }: Props) {
   const { isRunning } = useTimerStore();
 
   return (
@@ -27,9 +22,7 @@ export default function ButtonGroup({
         <Button
           icon={<Remove />}
           label={
-            label === 'Session Length'
-              ? 'Decrease the session length'
-              : 'Decrease the break length'
+            label === 'Session Length' ? 'Decrease the session length' : 'Decrease the break length'
           }
           small
           disabled={isRunning || value === 1}
@@ -41,9 +34,7 @@ export default function ButtonGroup({
         <Button
           icon={<Add />}
           label={
-            label === 'Session Length'
-              ? 'Increase the session length'
-              : 'Increase the break length'
+            label === 'Session Length' ? 'Increase the session length' : 'Increase the break length'
           }
           small
           disabled={isRunning || value === 60}

@@ -6,22 +6,15 @@ import { Box, Card, Stack, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 
 import { useTimerStore } from '@/store/timerStore';
-import formatTime from '@/utils/formatTime';
+import { formatTime } from '@/utils/formatTime';
 
 import Button from './Button';
 import Header from './Header';
 import Settings from './Settings';
 
 export default function Timer() {
-  const {
-    isRunning,
-    mode,
-    timeLeft,
-    changeMode,
-    countDown,
-    resetTimer,
-    toggleTimer,
-  } = useTimerStore();
+  const { isRunning, mode, timeLeft, changeMode, countDown, resetTimer, toggleTimer } =
+    useTimerStore();
 
   useEffect(() => {
     let tick: NodeJS.Timeout | null = null;
@@ -34,7 +27,7 @@ export default function Timer() {
 
     if (timeLeft === 0) {
       const audio = new Audio('/beep.mp3');
-      audio.play();
+      void audio.play();
     } else if (timeLeft < 0) {
       changeMode(mode === 'break' ? 'work' : 'break');
     }
@@ -101,11 +94,7 @@ export default function Timer() {
             label={isRunning ? 'Pause the timer' : 'Start the timer'}
             onClick={() => toggleTimer()}
           />
-          <Button
-            icon={<RestartAlt />}
-            label='Reset the timer'
-            onClick={() => resetTimer()}
-          />
+          <Button icon={<RestartAlt />} label='Reset the timer' onClick={() => resetTimer()} />
         </Stack>
       </Box>
       <Settings />

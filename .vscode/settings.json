@@ -1,9 +1,12 @@
 {
+  "typescript.tsdk": "node_modules/typescript/lib",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.format": true
+    "source.fixAll": true
+  },
+  "editor.quickSuggestions": {
+    "strings": true
   }
 }

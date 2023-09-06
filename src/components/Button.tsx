@@ -8,13 +8,7 @@ interface Props {
   onClick: () => void;
 }
 
-export default function Button({
-  icon,
-  label,
-  disabled = false,
-  small = false,
-  onClick,
-}: Props) {
+export default function Button({ icon, label, disabled, small, onClick }: Props) {
   return (
     <Fab
       sx={{
