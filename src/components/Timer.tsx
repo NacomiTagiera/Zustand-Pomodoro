@@ -2,17 +2,16 @@
 
 import { useEffect } from 'react';
 import { Pause, PlayArrow, RestartAlt } from '@mui/icons-material';
-import { Box, Card, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 
 import { useTimerStore } from '@/store/timerStore';
 import { formatTime } from '@/utils/formatTime';
 
-import Button from './Button';
-import Header from './Header';
-import Settings from './Settings';
+import { Button } from './Button';
+import { Settings } from './Settings';
 
-export default function Timer() {
+export const Timer = () => {
   const { isRunning, mode, timeLeft, changeMode, countDown, resetTimer, toggleTimer } =
     useTimerStore();
 
@@ -40,19 +39,7 @@ export default function Timer() {
   }, [changeMode, countDown, isRunning, mode, timeLeft]);
 
   return (
-    <Card
-      component='section'
-      variant='outlined'
-      sx={{
-        borderRadius: 6,
-        boxShadow: 18,
-        color: '#fff',
-        px: 4,
-        py: 5,
-        textAlign: 'center',
-      }}
-    >
-      <Header />
+    <>
       <Box
         sx={{
           display: 'flex',
@@ -98,6 +85,6 @@ export default function Timer() {
         </Stack>
       </Box>
       <Settings />
-    </Card>
+    </>
   );
-}
+};

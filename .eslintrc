@@ -70,7 +70,7 @@
       }
     },
     {
-      "files": ["src/app/**/*.ts?(x)", "src/components/**/*.ts?(x)"],
+      "files": ["src/app/**/*.ts?(x)"],
       "rules": {
         "import/no-default-export": "off"
       }

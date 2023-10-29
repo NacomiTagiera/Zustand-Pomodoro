@@ -1,21 +1,21 @@
 import { Fab } from '@mui/material';
 
-interface Props {
+type Props = {
   icon: React.ReactNode;
   label: string;
   disabled?: boolean;
-  small?: boolean;
+  size?: 'small' | 'medium';
   onClick: () => void;
-}
+};
 
-export default function Button({ icon, label, disabled, small, onClick }: Props) {
+export const Button = ({ icon, label, disabled, size = 'medium', onClick }: Props) => {
   return (
     <Fab
       sx={{
         m: '8px',
       }}
       color='error'
-      size={small ? 'small' : 'medium'}
+      size={size}
       aria-label={label}
       disabled={disabled}
       onClick={onClick}
@@ -23,4 +23,4 @@ export default function Button({ icon, label, disabled, small, onClick }: Props)
       {icon}
     </Fab>
   );
-}
+};

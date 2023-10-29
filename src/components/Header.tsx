@@ -1,9 +1,11 @@
+'use client';
+
 import { Box, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 
 import { useTimerStore } from '@/store/timerStore';
 
-export default function Header() {
+export const Header = () => {
   const { mode, breakLength, workLength } = useTimerStore();
 
   return (
@@ -20,4 +22,4 @@ export default function Header() {
       </Typography>
     </Box>
   );
-}
+};

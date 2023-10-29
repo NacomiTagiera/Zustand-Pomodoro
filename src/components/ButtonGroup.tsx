@@ -1,18 +1,20 @@
+'use client';
+
 import { Add, Remove } from '@mui/icons-material';
 import { Stack, Typography } from '@mui/material';
 
 import { useTimerStore } from '@/store/timerStore';
 
-import Button from './Button';
+import { Button } from './Button';
 
-interface Props {
+type Props = {
   label: string;
   value: number;
   onDecrement: () => void;
   onIncrement: () => void;
-}
+};
 
-export default function ButtonGroup({ label, value, onDecrement, onIncrement }: Props) {
+export const ButtonGroup = ({ label, value, onDecrement, onIncrement }: Props) => {
   const { isRunning } = useTimerStore();
 
   return (
@@ -24,7 +26,7 @@ export default function ButtonGroup({ label, value, onDecrement, onIncrement }: 
           label={
             label === 'Session Length' ? 'Decrease the session length' : 'Decrease the break length'
           }
-          small
+          size='small'
           disabled={isRunning || value === 1}
           onClick={onDecrement}
         />
@@ -36,11 +38,11 @@ export default function ButtonGroup({ label, value, onDecrement, onIncrement }: 
           label={
             label === 'Session Length' ? 'Increase the session length' : 'Increase the break length'
           }
-          small
+          size='small'
           disabled={isRunning || value === 60}
           onClick={onIncrement}
         />
       </Stack>
     </Stack>
   );
-}
+};

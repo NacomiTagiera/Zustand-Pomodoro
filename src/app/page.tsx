@@ -1,13 +1,16 @@
-import { Box } from '@mui/material';
-
-import About from '@/components/About';
-import Timer from '@/components/Timer';
+import { About } from '@/components/About';
+import { Card } from '@/components/Card';
+import { Header } from '@/components/Header';
+import { Timer } from '@/components/Timer';
 
 export default function Home() {
   return (
-    <Box component='main' sx={{ mx: 'auto', pt: 4, width: 'min(100vw, 350px)' }}>
-      <Timer />
+    <main>
+      <Card>
+        <Header />
+        <Timer />
+      </Card>
       <About />
-    </Box>
+    </main>
   );
 }

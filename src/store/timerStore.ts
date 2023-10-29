@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 type TimerMode = 'work' | 'break';
 
-interface TimerState {
+type State = {
   mode: TimerMode;
   workLength: number;
   breakLength: number;
@@ -13,9 +13,17 @@ interface TimerState {
   resetTimer: () => void;
   changeMode: (mode: TimerMode) => void;
   changeLength: (sessionType: TimerMode, length: number) => void;
-}
+};
 
-export const useTimerStore = create<TimerState>((set, get) => ({
+type Actions = {
+  toggleTimer: () => void;
+  countDown: () => void;
+  resetTimer: () => void;
+  changeMode: (mode: TimerMode) => void;
+  changeLength: (sessionType: TimerMode, length: number) => void;
+};
+
+export const useTimerStore = create<State & Actions>((set, get) => ({
   mode: 'work',
   workLength: 25,
   breakLength: 5,

@@ -11,3 +11,9 @@ body {
   margin: 0;
   padding: 0;
 }
+
+main {
+  padding-top: 32px;
+  margin-inline: auto;
+  width: min(100vw, 350px);
+}
