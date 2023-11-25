@@ -2,16 +2,11 @@
 
 This is a simple pomodoro timer website built with _Next.js_, _Zustand_ and _Material UI_. The website allows you to set a timer for a 25-minute pomodoro session, followed by a 5-minute break. You can also customize the duration of the pomodoro and break sessions. The app is deployed on Vercel and can be accessed at [`https://nextjs-zustand-pomodoro-timer.vercel.app`](https://nextjs-zustand-pomodoro-timer.vercel.app)
 
-## Technologies used
+## Features
 
-The project was built with the following technologies:
-
-- Next.js: a React framework for building server-side rendered web applications.
-- TypeScript: a statically-typed superset of JavaScript.
-- Zustand: a lightweight state management library.
-- Material UI: a popular React component library for building user interfaces.
-
-This will run all the tests in the project.
+- Zustand state management
+- Jest and RTL tests for Zustand store and formatTime function
+- Used Material UI reusable and customizable components
 
 ## Getting Started
 

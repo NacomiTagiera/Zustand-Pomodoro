@@ -1,22 +1,22 @@
 import { formatTime } from './formatTime';
 
-describe('formatTime', () => {
-  it('should format time correctly when minutes and seconds are both single digits', () => {
+describe('formatTime function returns correct time when', () => {
+  it('minutes and seconds are expected to be both single digits', () => {
     expect(formatTime(127)).toBe('02:07');
     expect(formatTime(63)).toBe('01:03');
   });
 
-  it('should format time correctly when minutes and seconds are both double digits', () => {
+  it('minutes and seconds are expected to be both double digits', () => {
     expect(formatTime(1405)).toBe('23:25');
     expect(formatTime(792)).toBe('13:12');
   });
 
-  it('should format time correctly when minutes and seconds are both zero', () => {
-    expect(formatTime(0)).toBe('00:00');
-  });
-
-  it('should format time correctly when only minutes or seconds are zero', () => {
+  it('only minutes or seconds are expected to be single digits', () => {
     expect(formatTime(600)).toBe('10:00');
     expect(formatTime(10)).toBe('00:10');
+  });
+
+  it('zero is provided to the function', () => {
+    expect(formatTime(0)).toBe('00:00');
   });
 });

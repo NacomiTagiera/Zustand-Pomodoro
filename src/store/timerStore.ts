@@ -8,11 +8,6 @@ type State = {
   breakLength: number;
   timeLeft: number;
   isRunning: boolean;
-  toggleTimer: () => void;
-  countDown: () => void;
-  resetTimer: () => void;
-  changeMode: (mode: TimerMode) => void;
-  changeLength: (sessionType: TimerMode, length: number) => void;
 };
 
 type Actions = {
